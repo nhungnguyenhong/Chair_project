@@ -1,0 +1,25 @@
+div.stars {}
+ 
+a.star {
+    font-size: 24px;
+    color: orange;
+    cursor: pointer;
+    line-height: 1;
+    transition: all 0.1s ease;
+}
+
+a.star.vote-hover {
+    color: orange;
+}
+
+a.star:active {
+    color: orange;
+}
+
+a.star.vote-active {
+    color: orange;
+}
+
+.blue {
+    color: orange;
+}

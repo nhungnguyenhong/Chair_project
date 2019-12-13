@@ -1,0 +1,57 @@
+ <!-- breadcrumb start-->
+  <section class="breadcrumb breadcrumb_bg">
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-lg-8">
+          <div class="breadcrumb_iner">
+            <div class="breadcrumb_iner_item">
+              <h2>My profile</h2>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- breadcrumb start-->
+  <!--================End Home Banner Area =================-->
+
+  <!--================Single Product Area =================-->
+  <% flash.each do |key, value| %>
+    <div id="error_explanation" style="mt-5">
+        <div class="alert alert-success col-lg-6 col-lg-offset-3">
+           <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+          <strong><%= value unless value.blank? %>!</strong>
+        </div>
+    </div>
+  <% end %>
+  <% if user_signed_in? %>
+      <div class="product_image_area section_padding">
+        <div class="container">
+          <div class="row s_product_inner justify-content-between">
+            <div class="col-lg-6 col-xl-6">
+              <div class="product_slider_img">
+                <div id="vertical">
+                  <div>
+                    <div class="text-center"><%= image_tag current_user.img? ? current_user.img.url : "http://file.vforum.vn/hinh/2018/02/hinh-cho-cuoi-deu-cho-de-thuong-12.jpg" %></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-6 col-xl-6">
+              <div class="s_product_text">
+                <h3><%= current_user.name %><h3>
+                <h4 class ="css-margin-top-50 "><span class="font-weight">Nick name: </span><%=current_user.nickname%></h4>
+                <h4 class ="css-margin-top-10 "><span class="font-weight">Gender: </span><%=current_user.gender%></h4>
+                <h4 class ="css-margin-top-10 "><span class="font-weight">Birthday: </span><%= current_user.birthday.strftime("%d/%m/%Y") if current_user.birthday %></h4>
+                <h4 class ="css-margin-top-10 "><span class="font-weight">Email: </span><%= current_user.email %></h4>
+                <div class="card_area d-flex justify-content align-items-center css-margin-top-50">
+                  <%= link_to "Edit profile", edit_user_path(current_user.id), method: :get, class: "btn btn-success mr-5 css-width-button" %>
+                  <%= link_to "Log out", destroy_user_session_path, method: :delete, class: "btn btn-danger css-width-button"%>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    <%end%>
+  <!--================End Single Product Area =================-->

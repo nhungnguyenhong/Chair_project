@@ -1,0 +1,81 @@
+<div class="content-wrapper">
+  <section class="content-header">
+    <h1>
+      Edit chair
+    </h1>
+    <ol class="breadcrumb">
+      <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
+      <li class="active">Chair</li>
+      <li class="active">Edit</li>
+    </ol>
+  </section>
+  <br>
+  <section class="container-fluid" style="background-color:white;margin: 0 10px 0px 10px;border-radius:5px;">
+    <div style="margin-top:20px" class="col-xs-9 col-xs-offset-1">
+      <%= form_for(@chair, as: :chair,:html => {:class => 'row'}, url: admin_chair_path(@chair.id), method: :put) do |f| %>
+        <% flash.each do |key, value| %>
+          <div id="error_explanation" style="mt-5">
+            <div class="alert alert-success col-lg-6 col-lg-offset-3">
+               <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+               <strong><%= value unless value.blank? %>!</strong>
+            </div>
+          </div>
+        <% end %>
+        <div class="col-md-12 form-group p_star">
+          <label>Name</label>
+          <%= f.text_field :name, autofocus: true, autocomplete: "name", class: "form-control", placeholder: "Name", value: @chair.name%>
+        </div>
+        <div class="col-md-12 form-group p_star">
+          <label>Category</label>
+          <select name="category_id" class = "form-control">
+            <%@categories.each do |c| %>
+              <option value="<%=c.id%>" <%if @chair.category.id == c.id %>selected<%end%>><%=c.name%></option>
+            <%end%>
+          </select>
+        </div>
+        <div class="col-md-12 form-group p_star">
+          <label>Description</label>
+          <%= f.text_area :description, autofocus: true, autocomplete: "description", class: "form-control", placeholder: "Description", value: @chair.description %>
+        </div>
+        <div class="col-md-12 form-group p_star">
+          <label>Price</label>
+          <%= f.text_field :price, autofocus: true, autocomplete: "price", class: "form-control", placeholder: "Price", value: @chair.price %>
+        </div>
+        <div class="col-md-12 form-group p_star">
+          <label>Quantity</label>
+          <%= f.number_field :quantity, autofocus: true, autocomplete: "quantity", class: "form-control", placeholder: "Quantity", min: "0", value: @chair.quantity %>
+        </div>
+        <div class="col-md-12 form-group p_star">
+          <label>Image</label>
+          <div>
+            <%= f.file_field :img, autofocus: true, autocomplete: "img", style: "float: left;line-height: 200px", placeholder: "img" %>
+            <%= image_tag @chair.img, class:"rounded img-thumbnail ", style:"width:200px;height:200px;float:left", id: "priview_chair"%>
+          </div>
+
+        </div>
+        <div class="col-md-2 col-md-offset-5 form-group">
+          <%= f.submit "Update", class: "btn btn-success", data: { confirm: "Do you want to update?" }, style:'width:100px;margin-top:50px'  %>
+        </div>
+      <% end %>
+    </div>
+  </section>
+  
+</div>
+
+<script>
+$(document).ready(function(){
+  CKEDITOR.replace( 'chair[description]' );
+  function readURL(input) {
+    if (input.files && input.files[0]) {
+      var reader = new FileReader();
+      reader.onload = function(e) {
+        $('#priview_chair').attr('src', e.target.result);
+      }
+      reader.readAsDataURL(input.files[0]);
+    }
+  }
+  $("#chair_img").change(function() {
+    readURL(this);
+  });
+});
+</script>

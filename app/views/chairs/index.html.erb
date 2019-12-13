@@ -1,0 +1,147 @@
+ <!--================Home Banner Area =================-->
+    <!-- breadcrumb start-->
+    <%= javascript_include_tag "js/submit.js" %>
+    <section class="breadcrumb breadcrumb_bg">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-8">
+                    <div class="breadcrumb_iner">
+                        <div class="breadcrumb_iner_item">
+                            <h2>Shop Category</h2>
+                            <p>Home <span>-</span> Shop Category</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- breadcrumb start-->
+
+    <!--================Category Product Area =================-->
+    <section class="cat_product_area section_padding">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-3">
+                    <div class="left_sidebar_area">
+                        <aside class="left_widgets p_filter_widgets">
+                            <div class="l_w_title">
+                                <h3>Browse Categories</h3>
+                            </div>
+                            <div class="widgets_inner">
+                                <ul class="list">
+                                    <% @categories.each do |category| %>
+                                        <li>
+                                            <%= link_to category.name, chairs_path(category: category.id), method: :get %>
+                                            <span>(<%= category.chairs.count %>)</span>
+                                            <ul class="list">
+                                                <% category.brands.each do |brand| %>
+                                                <li class="brand_img">
+                                                    <%= link_to (image_tag brand.img, width: '50%') , chairs_path(brand: brand.id), method: :get %>
+                                                    <% if params[:brand] && brand.id == @brand.id %>
+                                                        <i class="fa fa-caret-right"></i>
+                                                    <% end %>
+                                                </li>
+                                                <% end %>
+                                            </ul>
+                                        </li>
+                                    <% end %>
+                                </ul>
+                            </div>
+                        </aside>
+                    </div>
+                </div>
+                <div class="col-lg-9">
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <div class="product_top_bar d-flex justify-content-between align-items-center">
+                                <div class="single_product_menu">
+                                    <p><span style="color:red"><%= @quantity_chair %> </span><%= @quantity_chair == 1 ? "chair" : "chairs" %></p>
+                                </div>
+                                
+                                <%= search_form_for @search, class: "d-flex", url: chairs_path do |f|%>
+                                   <div class="d-flex"> 
+                                        <% if @category %>
+                                            <%= hidden_field_tag :category, @category.id %>
+                                        <% end %>
+                                        <div class="single_product_menu d-flex" style="margin-right:80px">
+                                            <h5 style="margin-right:10px">Sort by : </h5>
+                                            <select name="sort_by" id="sort_by">                                         
+                                                <option value="latest_chair">Latest chair</option>
+                                                <option value="price_asc" <% if @price_asc == true %>selected<% end %> >Price from low to high</option>
+                                                <option value="price_desc" <% if @price_desc == true %>selected<% end %> >Price from high to low</option>
+                                            </select>
+                                        </div>
+                                        <div class="single_product_menu d-flex" style="margin-right:80px">
+                                            <h5 style="margin-right:10px">Show :</h5>
+                                              <%= select_tag :limit, options_from_collection_for_select(Settings.show_limit, :second, :second, selected: params[:limit] || Settings.show_limit.limit),id: "show-limit"%>
+                                        </div>
+                                        <div class="single_product_menu" style="float:left">
+                                            <div class="input-group" style="width:200px">
+                                                <%= f.search_field :name_cont, class: "form-control", placeholder: "Seach by name" %>
+                                                <div class="input-group-prepend">
+                                                    <button type="button" class="input-group-text" id="search" name="commit" value="search"><i
+                                                            class="ti-search"></i></button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                   </div>
+                                <% end %>
+                               
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row align-items-center latest_product_inner">
+                        <% @chairs.each_with_index do |chair| %>
+                            <div class="col-lg-4 col-sm-6">
+                                <div class="single_product_item">
+                                    <div style="height:300px"><%= image_tag chair.img %></div>
+                                    <div class="single_product_text">
+                                        <%=   link_to chair.name, chair_path(chair.id), {:style=>'opacity:1;color:black;visibility: visible;'}%>
+                                        <b class="text-danger">$<%= chair.price %></b>
+                                        <p id=""><%=chair.rating%><span class="fa fa-star star-avg" ></span></p>
+                                        <% if chair.quantity == 0 %>
+                                            <h3 align="left" class="text-danger">SOLD OUT</h3>
+                                        <%else%>
+                                            <%= form_for @order_item, remote: true do |f| %>
+                                                <%= f.hidden_field :quantity, value: 1 %>
+                                                <%= f.hidden_field :chair_id, value: chair.id %>
+                                                <%= f.submit "Add to Cart", class: "btn_3 d-none", id: "add_cart" + chair.id.to_s %>
+                                                <a href="javascript:$('#add_cart<%= chair.id.to_s %>').click();" class="add_cart">+ add to cart</a>
+                                            <% end %>
+                                        <%end%>
+                                    </div>
+                                </div>
+                            </div>
+                        <% end %>
+                        
+                        <div class="col-lg-12">
+                            <div class="pageination">
+                                <nav aria-label="Page navigation example">
+                                    <div class="pagination justify-content-center">
+                                        <%= paginate @chairs, theme: 'twitter-bootstrap-3' %>
+                                    </div>
+                                </nav>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!--================End Category Product Area =================-->
+<script>
+  $(function(){
+    $( ".commit" ).click(function() {
+      var id = $(this).attr('id')
+      $.ajax({
+        method: "post",
+        url: "/order_items",
+        data: {'chair_id': id, 'quantity': 1},
+        success: function (res) {
+          alert('Add to cart success!');
+        },
+      });
+    });
+  })
+</script>

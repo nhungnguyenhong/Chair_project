@@ -1,0 +1,242 @@
+ <!-- breadcrumb start-->
+  <section class="breadcrumb breadcrumb_bg">
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-lg-8">
+          <div class="breadcrumb_iner">
+            <div class="breadcrumb_iner_item">
+              <h2>Chair detail</h2>
+              <p>Home <span>-</span> Shop Single</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- breadcrumb start-->
+  <!--================End Home Banner Area =================-->
+
+  <!--================Single Product Area =================-->
+    <div id="response-success" style="mt-5">
+        
+      </div>
+  <div class="product_image_area section_padding">
+    <div class="container">
+   
+      <div class="row s_product_inner justify-content-between">
+        <div class="col-lg-7 col-xl-7">
+          <div class="product_slider_img">
+            <div id="vertical">
+              <div data-thumb="img/product/single-product/product_1.png">
+                <div><%=image_tag @chair.img %></div>
+              </div>
+              <!--<div data-thumb="img/product/single-product/product_1.png">-->
+              <!--  <div><%=image_tag @chair.img %></div>-->
+              <!--</div>-->
+              <!--<div data-thumb="img/product/single-product/product_1.png">-->
+              <!--  <div><%=image_tag @chair.img %></div>-->
+              <!--</div>-->
+              <!--<div data-thumb="img/product/single-product/product_1.png">-->
+              <!--  <div><%=image_tag @chair.img %></div>-->
+              <!--</div>-->
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-5 col-xl-4">
+          <div class="s_product_text">
+            <input type="hidden" id="chair_id" value = "<%=@chair.id%>">
+            <h3><%= @chair.name %><h3>
+            <h2>$<%=@chair.price%></h2>
+            <p>
+              <%= raw(@chair.description) %>
+            </p>
+            <p class='h3'>
+              <b class="mr-3">Average rating</b> <span id="avg"><%=@chair.rating%></span><span class="fa fa-star star-avg" ></span>
+            </p>
+            <% if current_user %>
+              <div id="cate-rating" class="cate-rating">
+                <div class="stars">
+                  <a id="star-1" class="star"><span class="fa fa-star"></span></a>
+                  <a id="star-2" class="star"><span class="fa fa-star"></span></a>
+                  <a id="star-3" class="star"><span class="fa fa-star"></span></a>
+                  <a id="star-4" class="star"><span class="fa fa-star"></span></a>
+                  <a id="star-5" class="star"><span class="fa fa-star"></span></a>
+                </div>
+                <div class="clearfix"></div>
+              </div>
+            <% else %>
+              <p>
+                <%= link_to "Login", new_user_session_path %> 
+                to rate this chair
+              </p>
+            <% end %>
+            <% if @chair.quantity  == 0 %>
+              <h3 align="center" class="text-danger">SOLD OUT</h3>
+            <%else%>
+              <form class="new_order_item" id="new_order_item" action="/order_items" accept-charset="UTF-8" data-remote="true" method="post"><input name="utf8" type="hidden" value="✓">
+            
+                <div class="card_area d-flex justify-content-between align-items-center">
+                  <div class="product_count">
+                    <span class="inumber-decrement"> <i class="ti-minus"></i></span>
+                    <input value="1" class="input-number" min="1" type="text" name="order_item[quantity]" id="order_item_quantity"><span class="number-increment"> <i class="ti-plus"></i></span>
+                  </div>
+                  <input value="<%=@chair.id%>" type="hidden" name="order_item[chair_id]" id="order_item_chair_id">
+                  <input type="button" name="commit" id = "commit" value="Add to Cart" class="btn_3" data-disable-with="Add to Cart"><a href="#" class="like_us"> <i class="ti-heart"></i> </a>
+              </form>
+            <%end%>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!--================End Single Product Area =================-->
+
+  <!--================comment==============-->
+
+  <div class="container mt-5 " >
+      <div id="fb-root"></div>
+      <script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v5.0&appId=679136475896132&autoLogAppEvents=1"></script>      
+      <div class="fb-like" data-href="<%=@url_current%>" data-width="" data-layout="standard" data-action="like" data-size="small" data-show-faces="true" data-share="true"></div>
+      <div class="fb-comments" data-href="<%=@url_current%>" data-width="1100" data-numposts="5"></div>
+  </div>
+ 
+  <!--================comment===============-->
+
+
+  <!-- product_list other start-->
+  <section class="product_list best_seller mt-5">
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-lg-12">
+          <div class="section_tittle text-center">
+            <h2>Other chair</h2>
+          </div>
+        </div>
+      </div>
+      <div class="row align-items-center justify-content-between">
+        <div class="col-lg-12">
+          <div class="best_product_slider owl-carousel">
+            <% @list_other_chair.each  do |chair| %>
+                <div class="single_product_item">
+                 <div style="height:300px"><%= image_tag chair.img %></div>
+                  <div class="single_product_text">
+                    <%=   link_to chair.name, chair_path(chair.id), {:style=>'opacity:1;color:black;visibility: visible'}%>
+                    <h3><b style="color:red">$<%= chair.price %></b></h3>
+                    <p id=""><%=chair.rating%><span class="fa fa-star star-avg" ></span></p>
+                  </div>
+                </div>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!--end list other chair-->
+   <!-- history start-->
+  <% if @histories %>
+  <section class="product_list best_seller mt-5">
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-lg-12">
+          <div class="section_tittle text-center">
+            <h2>Access History</h2>
+          </div>
+        </div>
+      </div>
+    <div class="row">
+      <div class="col-lg-12">
+          <div class="product_list_slider owl-carousel">
+              <div class="single_product_list_slider">
+                  <div class="row align-items-center">
+                      <%@histories.each_with_index do |history| %>
+                          <div class="col-lg-3 col-sm-6">
+                              <div class="single_product_item">
+                                  <div style="width: 262.5px"><%= image_tag history.chair.img %></div>
+                                  <div class="single_product_text">
+                                      <h4><%= link_to history.chair.name, chair_path(history.chair.id), {:style=>'opacity:1;color:black;visibility: visible'}%> </h4>
+                                      <b class="text-danger">$<%= history.chair.price %></b>
+                                      <p id=""><%=history.chair.rating%><span class="fa fa-star star-avg" ></span></p>
+                                  </div>
+                              </div>
+                          </div>
+                      <% end %>
+                  </div>
+              </div>
+          </div>
+      </div>
+    </div>
+  </section>
+  <%end%>
+  <!--end history-->
+<script>
+  $(document).ready(function() {
+    var chair_id = $("#chair_id").val();
+    $( "#commit" ).click(function() {
+      var quantity = $('#order_item_quantity').val();
+      var id = $('#order_item_chair_id').val();
+      $.ajax({
+        method: "post",
+        url: "/order_items",
+        data: {'chair_id': id, 'quantity': quantity},
+        success: function (res) {
+          $( "#response-success" ).append( "<div class='alert alert-success col-lg-6 col-lg-offset-3 mt-3'><a href='#' class='close' data-dismiss='alert' aria-label='close'>&times;</a><strong>Add to cart success!</strong></div>" );
+          setTimeout(function(){ $('#response-success').hide(); }, 5000);
+        },
+      });
+    });
+    $.ajax({
+      method: "get",
+      url: "/rating",
+      data: {"chair_id":chair_id},
+      success: function (res) {
+        var eID = res.point;
+        for (var i = 1; i <= eID; i++) {
+          $('#star-' + i).addClass('vote-active');
+        }
+        $('p#vote-desc').html('<span class="blue">' + eID + ' (' + eID * 10 + '%)</span> &middot; ' + 1 + ' đánh giá');
+        $('#cate-rating').addClass('rating-ok');
+        
+      }
+    });
+    /*
+     * Hiệu ứng khi rê chuột lên ngôi sao
+     */
+    $('a.star').mouseenter(function() {
+        if ($('#cate-rating').hasClass('rating-ok') == false) {
+            var eID = $(this).attr('id');
+            eID = eID.split('-').splice(-1);
+            $('a.star').removeClass('vote-active');
+            for (var i = 1; i <= eID; i++) {
+                $('#star-' + i).addClass('vote-hover');
+            }
+        }
+    }).mouseleave(function() {
+        if ($('#cate-rating').hasClass('rating-ok') == false) {
+            $('a.star').removeClass('vote-hover');
+        }
+    });
+
+    /*
+     * Sự kiện khi cho điểm
+     */
+    $('a.star').click(function() {
+        if ($('#cate-rating').hasClass('rating-ok') == false) {
+          var eID = $(this).attr('id');
+          eID = eID.split('-').splice(-1).toString();
+          for (var i = 1; i <= eID; i++) {
+              $('#star-' + i).addClass('vote-active');
+          }
+          $('p#vote-desc').html('<span class="blue">' + eID + ' (' + eID * 10 + '%)</span> &middot; ' + 1 + ' đánh giá');
+          $('#cate-rating').addClass('rating-ok');
+          $.ajax({
+              method: "post",
+              url: "/rating",
+              data: {"chair_id":chair_id, "point":eID},
+              success: function (res) {
+                $('#avg').html(res)
+              }
+          });
+        }
+    });
+  });
+</script>

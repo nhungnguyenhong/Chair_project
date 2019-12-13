@@ -1,0 +1,103 @@
+<div class="content-wrapper">
+  <section class="content-header">
+    <h1>
+      Chair List
+    </h1>
+    <ol class="breadcrumb">
+      <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
+      <li class="active">Chair</li>
+      <li class="active">List</li>
+    </ol>
+  </section>
+  <br>
+  <section class="container-fluid" style="background-color:white;margin: 0 10px 0px 10px;border-radius:5px;height:1500px">
+    <div style="margin-top:20px">
+      <div class="col-lg-8">
+        <%= link_to "New", new_admin_chair_path, :class=>'btn btn-primary', :style=>'width:100px'%>
+      </div>
+      <div class="col-lg-4"> 
+        <div class="input-group">
+          <%= search_form_for @search, class: "input-group-btn search-panel",   url: admin_chairs_path do |f|%>
+            <div style="float:left">
+              <select class="form-control" id="category" name="category">
+                <option value="0">Select all</option>
+                <% @categories.each do |c| %>
+                  <option value="<%=c.id%>" <% if c.id === @category_id %>selected<%end%>><%=c.name%></option>
+                <%end%>
+              </select>
+            </div>
+            <%= f.search_field :name_cont, class: "form-control", placeholder: "Seach by name", style: "float:left;width:300px" %>
+            <span class="input-group-btn">
+                <button class="btn btn-default" type="submit"><span class="glyphicon glyphicon-search"></span></button>
+            </span>
+          <%end%>
+        </div>
+      </div>
+      
+    </div>
+    <div style="margin-top:70px;" >
+      <div id="response-success" style="mt-5">
+        
+      </div>
+      <table class="table table-bordered">
+        <thead class="thead-dark">
+          <tr>
+            <th scope="col">ID</th>
+            <th scope="col">Name</th>
+            <th scope="col">Category</th>
+            <th scope="col">Description</th>
+            <th scope="col">Image</th>
+            <th scope="col">Price</th>
+            <th scope="col">Quantity</th>
+            <th scope="col"></th>
+          </tr>
+        </thead>
+        <tbody>
+            <%@chairs.each do |chair| %>
+              <tr style="<%if chair.quantity == 0%>border-color:red;<%end%>">
+                <td><%= chair.id %></td>
+                <td><%= chair.name %></td>
+                <td><%= chair.category.name %></td>
+                <td><%= raw(chair.description) %></td>
+                <td><%= image_tag chair.img, width: '100' %></td>
+                <td><%= chair.price %></td>
+                <td><%= chair.quantity %></td>
+                <td><%= link_to "Edit", edit_admin_chair_path(chair.id), class: 'btn btn-warning ', style: 'width:63px;margin-bottom:2px'%>
+                    <button class = "btn btn-danger delete" id = "<%=chair.id%>" >Delete</button>
+                </td>
+              </tr>
+            <% end %>
+        </tbody>
+      </table>
+      <div class="col-lg-4 col-lg-offset-4">
+          <%= paginate @chairs, theme: 'twitter-bootstrap-3' %>
+      </div> 
+    </div>
+  </section>
+</div>
+<script>
+  $(function(){
+    $("#category").on("change", function(){
+      $(this).closest("form").trigger("submit");
+    });
+    $( ".delete" ).click(function() {
+      var id = $(this).attr('id')
+      var childTr = $(this).closest('tr')
+      if(confirm("Are you sure?")){
+        $.ajax({
+          method: "delete",
+          url: "/admin/chairs/"+id,
+          success: function (res) {
+            childTr.hide();   //ẩn đi thẻ được gán
+            $( "#response-success" ).append( "<div class='alert alert-danger col-lg-6 col-lg-offset-3'><a href='#' class='close' data-dismiss='alert' aria-label='close'>&times;</a><strong>Delete success!</strong></div>" );
+            setTimeout(function(){ $('#response-success').hide(); }, 3000);
+            childTr.hide();
+          },
+        });
+      }
+
+    });
+  })
+</script>
+<style>
+</style>

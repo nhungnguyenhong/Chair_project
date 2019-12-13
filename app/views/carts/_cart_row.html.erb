@@ -1,0 +1,33 @@
+<!-- breadcrumb start-->
+
+<!--================Cart Area =================-->
+<tr>
+  <td>
+    <div class="media">
+      <div class="d-flex">
+        <%= image_tag chair.img, width: '127' %>
+      </div>
+      <div class="media-text">
+        <p><%= chair.name %></p>
+        <%= link_to "Delete", order_item, method: :delete, class: "btn btn-danger" %>
+      </div>
+    </div>
+  </td>
+  <td>
+    <h5>$<%= chair.price %></h5>
+  </td>
+  <td>
+    <%= form_for order_item do |f| %>
+    <div class="product_count">
+      <span class="input-number-decrement"> <i class="ti-angle-down"></i></span>
+      <%= f.text_field :quantity, value: order_item.quantity.to_i, class: "input-number", min: 1 %>
+      <span class="input-number-increment"> <i class="ti-angle-up"></i></span>
+      <%= f.hidden_field :chair_id, value: chair.id %>
+      <%= f.submit "Update quantity", class: "d-none", id: "update-item-button" %>
+    </div>
+    <% end %>
+  </td>
+  <td>
+    <h5>$<%= order_item.total_price.round %></h5>
+  </td>
+</tr>

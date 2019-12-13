@@ -1,0 +1,42 @@
+<div class="content-wrapper">
+    <section class="content-header">
+    <h1>
+      Billing List
+    </h1>
+    <ol class="breadcrumb">
+      <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
+      <li class="active">Billing</li>
+      <li class="active">List</li>
+    </ol>
+    </section>
+    <br>
+  <section class="container-fluid" style="background-color:white;margin: 0 10px 0px 10px;border-radius:5px;height:1500px">
+        <table class="table table-bordered" style="margin-top:30px;">
+          <thead class="thead-dark">
+            <tr>
+              <th scope="col">ID</th>
+              <th scope="col">Order ID</th>
+              <th scope="col">Username</th>
+              <th scope="col">Total(unit: $)</th>
+              <th scope="col">Date</th>
+              <th scope="col"></th>
+            </tr>
+          </thead>
+          <tbody>
+              <%- @billings.each do |billing| %>
+                <tr>
+                  <td><%= billing.id %></td>
+                  <td>#<%= billing.order_id %></td>
+                  <td><%= billing.user.name %></td>
+                  <td><%= billing.total %>$</td>
+                  <td><%= billing.created_at %></td>
+                  <td><%= link_to "Info", admin_billing_path(billing.id), {:class=>'btn btn-primary'}%>
+                  </td>
+                </tr>
+              <% end %>
+          </tbody>
+        </table>
+        <%= paginate @billings, theme: 'twitter-bootstrap-3' %>
+        
+    </section>
+</div>
