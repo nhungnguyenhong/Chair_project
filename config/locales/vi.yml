@@ -1,0 +1,82 @@
+# Files in the config/locales directory are used for internationalization
+# and are automatically loaded by Rails. If you want to use locales other
+# than English, add the necessary files in this directory.
+#
+# To use the locales, use `I18n.t`:
+#
+#     I18n.t 'hello'
+#
+# In views, this is aliased to just `t`:
+#
+#     <%= t('hello') %>
+#
+# To use a different locale, set it with `I18n.locale`:
+#
+#     I18n.locale = :es
+#
+# This would use the information in config/locales/es.yml.
+#
+# To learn more, please read the Rails Internationalization guide
+# available at http://guides.rubyonrails.org/i18n.html.
+
+vi:
+  add_to_cart: Thêm giỏ hàng
+  chair: Ghế
+  chairs: Ghế
+  sold_out: Hết hàng
+  detail: Chi tiết
+  login: Đăng nhập
+  to_rate_this_chair: để đánh giá ghế này
+  layouts:
+    _header:
+      home: Trang chủ
+      shop: Cửa hàng
+      contact: Liên hệ
+      sign_in: Đăng nhập
+      sign_up: Đăng ký
+      my_account: Tài khoản
+      log_out: Thoát
+      admin_dashboard: Trang quản lý
+      shop_category: Danh mục cửa hàng
+  static_pages:
+    home:
+      preamble: Chúng tôi cam kết sự an toàn và thoải mái của bạn
+      list_chair: Danh sách ghế
+      see_more: Xem thêm
+      our_brands: Các thương hiệu
+      subscribe: Đăng ký để được cập nhật với ưu đãi mới
+      join_our_newsletter: THAM GIA CÙNG CHÚNG TÔI
+      enter_email: Nhập địa chỉ email
+      subscribe_now: ĐĂNG KÝ NGAY
+  chairs:
+    index:   
+      browse_categories: Danh mục
+      sort_by: Xếp theo
+      show: Hiện thị
+      search_by_name: Tìm kiếm theo tên
+      latest_chair: Theo thời gian
+      price_low_to_high: Giá từ thấp đến cao
+      price_high_to_low: Giá từ cao đến thấp
+    show:
+      chair_detail: Chi tiết ghế
+      adverage_rating: Đánh giá trung bình
+      other_chair: Các ghế khác
+      access_history: Lịch sử truy cập
+  users:
+    index:
+      my_profile: Thông tin cá nhân
+      gender: Giới tính
+      birthday: Ngày sinh
+      edit_profile: Sửa thông tin
+    edit:
+      full_name: Họ và tên
+      update_profile: Cập nhật
+  cart:
+    product: Sản phẩm
+    price: Giá
+    quantity: Số lượng
+    total: Số tiền
+    sub_total: Tổng tiền
+    continute_shopping: Tiếp tục mua hàng
+    proceed_checkout: Thanh toán
+

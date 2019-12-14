@@ -66,4 +66,8 @@ class ChairsController < ApplicationController
             render json:@rating
         end
     end
+    def get_chair_by_key
+        @list_name_chair = Chair.select('name').where("lower(name) LIKE ?","%#{params[:key]}%")
+        render json:@list_name_chair
+    end
 end

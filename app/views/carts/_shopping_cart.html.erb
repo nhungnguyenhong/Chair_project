@@ -33,10 +33,10 @@
           <table class="table">
             <thead>
               <tr>
-                <th scope="col">Product</th>
-                <th scope="col">Price</th>
-                <th scope="col">Quantity</th>
-                <th scope="col">Total</th>
+                <th scope="col"><%=t("cart.product")%></th>
+                <th scope="col"><%=t("cart.price")%></th>
+                <th scope="col"><%=t("cart.quantity")%></th>
+                <th scope="col"><%=t("cart.total")%></th>
               </tr>
             </thead>
             <tbody>
@@ -62,7 +62,7 @@
                 <td></td>
                 <td></td>
                 <td>
-                  <h5>Subtotal</h5>
+                  <h5><%=t("cart.sub_total")%></h5>
                 </td>
                 <td>
                   <h5>$<%= @order.subtotal.round %></h5>
@@ -115,8 +115,8 @@
             </tbody>
           </table>
           <div class="checkout_btn_inner float-right">
-            <%= link_to "Continue Shopping", chairs_path, class: 'btn_1', method: :get %>
-            <%= link_to "Proceed to Checkout", new_billing_path, class: 'btn_1 checkout_btn_1', method: :get %>
+            <%= link_to t("cart.continute_shopping"), chairs_path, class: 'btn_1', method: :get %>
+            <%= link_to t("cart.proceed_checkout"), new_billing_path, class: 'btn_1 checkout_btn_1', method: :get %>
           </div>
         </div>
       </div>

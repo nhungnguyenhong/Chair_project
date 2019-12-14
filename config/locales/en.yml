@@ -20,4 +20,62 @@
 # available at http://guides.rubyonrails.org/i18n.html.
 
 en:
-  hello: "Hello world"
+  add_to_cart: Add to cart
+  # chair: Chair
+  chairs: Chairs
+  sold_out: SOLD OUT
+  detail: Detail
+  login: Login
+  to_rate_this_chair: to rate this chair
+  layouts:
+    _header:
+      home: Home
+      shop: Shop
+      contact: Contact
+      sign_in: Sign in
+      sign_up: Sign up
+      my_account: My account
+      log_out: Log out
+      admin_dashboard: Admin dashboard
+      shop_category: Shop category
+  static_pages:
+    home:
+      preamble: We committed to your safety & comfort
+      list_chair: List chair
+      see_more: See more
+      our_brands: Our brands
+      subscribe: Subscribe to get Updated with new offers
+      join_our_newsletter: JOIN OUR NEWSLETTER
+      enter_email: Enter email address
+      subscribe_now: SUBSCRIBE NOW
+  chairs:
+    index:   
+      browse_categories: Browse Categories
+      sort_by: Sort by
+      show: show
+      search_by_name: Search by name
+      latest_chair: Latest chair
+      price_low_to_high: Price from low to high
+      price_high_to_low: Price from high to low
+    show:
+      chair_detail: Chair detail
+      adverage_rating: Average rating
+      other_chair: Other chairs
+      access_history: Access history
+  users:
+    index:
+      my_profile: My profile
+      gender: Gender
+      birthday: Birthday
+      edit_profile: Edit profile
+    edit:
+      full_name: Full name
+      update_profile: Update profile
+  cart:
+    product: Product
+    price: Price
+    quantity: Quantity
+    total: Total
+    sub_total: Subtotal
+    continute_shopping: Continute shopping
+    proceed_checkout: Proceed to checkout
