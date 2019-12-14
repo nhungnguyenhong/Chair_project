@@ -5,8 +5,8 @@
         <div class="col-lg-8">
           <div class="breadcrumb_iner">
             <div class="breadcrumb_iner_item">
-              <h2>Chair detail</h2>
-              <p>Home <span>-</span> Shop Single</p>
+              <h2><%=t("chairs.show.chair_detail")%></h2>
+              <p><%=t("layouts._header.home")%> <span>-</span><%=t("detail")%></p>
             </div>
           </div>
         </div>
@@ -51,7 +51,7 @@
               <%= raw(@chair.description) %>
             </p>
             <p class='h3'>
-              <b class="mr-3">Average rating</b> <span id="avg"><%=@chair.rating%></span><span class="fa fa-star star-avg" ></span>
+              <b class="mr-3"><%=t("chairs.show.adverage_rating")%></b> <span id="avg"><%=@chair.rating%></span><span class="fa fa-star star-avg" ></span>
             </p>
             <% if current_user %>
               <div id="cate-rating" class="cate-rating">
@@ -66,12 +66,12 @@
               </div>
             <% else %>
               <p>
-                <%= link_to "Login", new_user_session_path %> 
-                to rate this chair
+                <%= link_to t("login"), new_user_session_path %> 
+                <%=t("to_rate_this_chair")%>
               </p>
             <% end %>
             <% if @chair.quantity  == 0 %>
-              <h3 align="center" class="text-danger">SOLD OUT</h3>
+              <h3 align="center" class="text-danger"><%=t("sold_out")%></h3>
             <%else%>
               <form class="new_order_item" id="new_order_item" action="/order_items" accept-charset="UTF-8" data-remote="true" method="post"><input name="utf8" type="hidden" value="✓">
             
@@ -81,7 +81,7 @@
                     <input value="1" class="input-number" min="1" type="text" name="order_item[quantity]" id="order_item_quantity"><span class="number-increment"> <i class="ti-plus"></i></span>
                   </div>
                   <input value="<%=@chair.id%>" type="hidden" name="order_item[chair_id]" id="order_item_chair_id">
-                  <input type="button" name="commit" id = "commit" value="Add to Cart" class="btn_3" data-disable-with="Add to Cart"><a href="#" class="like_us"> <i class="ti-heart"></i> </a>
+                  <input type="button" name="commit" id = "commit" value='<%=t("add_to_cart")%>' class="btn_3" data-disable-with="Add to Cart"><a href="#" class="like_us"> <i class="ti-heart"></i> </a>
               </form>
             <%end%>
           </div>
@@ -109,7 +109,7 @@
       <div class="row justify-content-center">
         <div class="col-lg-12">
           <div class="section_tittle text-center">
-            <h2>Other chair</h2>
+            <h2><%=t("chairs.show.other_chair")%></h2>
           </div>
         </div>
       </div>
@@ -133,13 +133,13 @@
   </section>
   <!--end list other chair-->
    <!-- history start-->
-  <% if @histories %>
+  <% if @histories and @histories.count > 0%>
   <section class="product_list best_seller mt-5">
     <div class="container">
       <div class="row justify-content-center">
         <div class="col-lg-12">
           <div class="section_tittle text-center">
-            <h2>Access History</h2>
+            <h2><%=t("chairs.show.access_history")%></h2>
           </div>
         </div>
       </div>

@@ -1,5 +1,5 @@
 class ApplicationController < ActionController::Base
-  before_action :store_user_location!, if: :storable_location?
+  before_action :set_locale, :store_user_location!, if: :storable_location?
   protect_from_forgery with: :exception
 
   helper_method :current_order
@@ -33,5 +33,15 @@ class ApplicationController < ActionController::Base
     def store_user_location!
       # :user is the scope we are authenticating
       store_location_for(:user, request.fullpath)
+    end
+
+    private
+    def set_locale
+      locale = params[:locale].to_s.strip.to_sym
+      I18n.locale = I18n.available_locales.include?(locale) ?
+        locale : I18n.default_locale
+    end
+    def default_url_options
+      {locale: I18n.locale}
     end
 end

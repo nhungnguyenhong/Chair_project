@@ -7,8 +7,8 @@
                 <div class="col-lg-8">
                     <div class="breadcrumb_iner">
                         <div class="breadcrumb_iner_item">
-                            <h2>Shop Category</h2>
-                            <p>Home <span>-</span> Shop Category</p>
+                            <h2><%=t("layouts._header.shop_category")%></h2>
+                            <p><%=t("layouts._header.home")%> <span>-</span> <%=t("layouts._header.shop_category")%></p>
                         </div>
                     </div>
                 </div>
@@ -25,7 +25,7 @@
                     <div class="left_sidebar_area">
                         <aside class="left_widgets p_filter_widgets">
                             <div class="l_w_title">
-                                <h3>Browse Categories</h3>
+                                <h3><%=t("chairs.index.browse_categories")%></h3>
                             </div>
                             <div class="widgets_inner">
                                 <ul class="list">
@@ -64,20 +64,20 @@
                                             <%= hidden_field_tag :category, @category.id %>
                                         <% end %>
                                         <div class="single_product_menu d-flex" style="margin-right:80px">
-                                            <h5 style="margin-right:10px">Sort by : </h5>
+                                            <h5 style="margin-right:10px"><%=t("chairs.index.sort_by")%> : </h5>
                                             <select name="sort_by" id="sort_by">                                         
-                                                <option value="latest_chair">Latest chair</option>
-                                                <option value="price_asc" <% if @price_asc == true %>selected<% end %> >Price from low to high</option>
-                                                <option value="price_desc" <% if @price_desc == true %>selected<% end %> >Price from high to low</option>
+                                                <option value="latest_chair"><%=t("chairs.index.latest_chair")%></option>
+                                                <option value="price_asc" <% if @price_asc == true %>selected<% end %> ><%=t("chairs.index.price_low_to_high")%></option>
+                                                <option value="price_desc" <% if @price_desc == true %>selected<% end %> ><%=t("chairs.index.price_high_to_low")%></option>
                                             </select>
                                         </div>
                                         <div class="single_product_menu d-flex" style="margin-right:80px">
-                                            <h5 style="margin-right:10px">Show :</h5>
+                                            <h5 style="margin-right:10px"><%=t("chairs.index.show")%> :</h5>
                                               <%= select_tag :limit, options_from_collection_for_select(Settings.show_limit, :second, :second, selected: params[:limit] || Settings.show_limit.limit),id: "show-limit"%>
                                         </div>
                                         <div class="single_product_menu" style="float:left">
                                             <div class="input-group" style="width:200px">
-                                                <%= f.search_field :name_cont, class: "form-control", placeholder: "Seach by name" %>
+                                                <%= f.search_field :name_cont, class: "form-control", placeholder: t('chairs.index.search_by_name') %>
                                                 <div class="input-group-prepend">
                                                     <button type="button" class="input-group-text" id="search" name="commit" value="search"><i
                                                             class="ti-search"></i></button>
@@ -107,7 +107,7 @@
                                                 <%= f.hidden_field :quantity, value: 1 %>
                                                 <%= f.hidden_field :chair_id, value: chair.id %>
                                                 <%= f.submit "Add to Cart", class: "btn_3 d-none", id: "add_cart" + chair.id.to_s %>
-                                                <a href="javascript:$('#add_cart<%= chair.id.to_s %>').click();" class="add_cart">+ add to cart</a>
+                                                <a href="javascript:$('#add_cart<%= chair.id.to_s %>').click();" class="add_cart">+ <%=t("add_to_cart")%></a>
                                             <% end %>
                                         <%end%>
                                     </div>
@@ -130,8 +130,29 @@
         </div>
     </section>
     <!--================End Category Product Area =================-->
+</div>
 <script>
   $(function(){
+    //auto complete
+    $('#q_name_cont').keyup(function(){
+        var key = $('#q_name_cont').val();
+        var result = [];
+        $.ajax({
+            method: "post",
+            url: "/search_chair",
+            data: {'key': key.toLowerCase()},
+            success: function (res) {
+                res.forEach(function(chair) {
+                    result.push(chair.name);
+                });            
+            },
+        });
+        $( "#q_name_cont" ).autocomplete({
+            source: result
+        });
+    });
+
+    //add to cart
     $( ".commit" ).click(function() {
       var id = $(this).attr('id')
       $.ajax({
