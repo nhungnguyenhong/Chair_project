@@ -48,7 +48,7 @@
                                             <h4><%= link_to chair.name, chair_path(chair.id), {:style=>'opacity:1;color:black;visibility: visible'}%> </h4>
                                             <b class="text-danger">$<%= chair.price %></b>
                                             <% if chair.quantity >0 %>
-                                                <a href="javascript:;"  class="add_cart commit" id ="<%=chair.id%>">+ <%=t("add_to_cart")%><i class="ti-heart"></i></a>
+                                                <a href="javascript:;"  class="add_cart commit" id ="<%=chair.id%>">+ <%=t("add_to_cart")%></a>
                                             <%else%>
                                                 <h3 align="left" class="text-danger"><%=t("sold_out")%></h3>
                                             <%end%>

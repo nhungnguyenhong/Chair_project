@@ -59,3 +59,4 @@ gem 'omniauth-google-oauth2', '~> 0.8.0'
 gem 'omniauth-facebook', '~> 4.0'
 gem 'dotenv-rails', groups: [:development, :test]
 gem 'paypal-checkout-sdk', '~> 1.0', '>= 1.0.1'
+gem 'gmaps4rails'

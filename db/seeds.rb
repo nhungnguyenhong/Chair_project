@@ -9,49 +9,40 @@
 User.delete_all
 User.create!([
 	{id: 1, role: 1,
-		name: "Do Thi Hai",
-		email: "dothihai@gmail.com",
+		name: "Nguyen Hong Nhung",
+		email: "hongnhungnguyen4092@gmail.com",
 		password: "123456", password_confirmation: "123456",
-		nickname: "dothihai",
+		nickname: "Nhungbee",
 		gender: "female",
 		remote_img_url: "http://file.vforum.vn/hinh/2018/02/hinh-cho-cuoi-deu-cho-de-thuong-12.jpg",
 		birthday:"1997-10-10"},
 
 	{id: 2, role: 0,
-		name: "Trinh Huu Vu",
-		email: "trinhhuuvu@gmail.com",
+		name: "Vu Tran Trong Nguyen",
+		email: "vutrantrongnguyen@gmail.com",
 		password: "123456", password_confirmation: "123456",
-		nickname: "trinhhuuvu",
+		nickname: "nguyennguyen",
 		gender: "male",
 		remote_img_url: "http://file.vforum.vn/hinh/2018/02/hinh-cho-cuoi-deu-cho-de-thuong-12.jpg",
 		birthday: "1997-12-12"},
 
 	{id: 3, role: 0,
-		name: "Nguyen Thi Kieu Thuong",
-		email: "nguyenthikieuthuong@gmail.com",
+		name: "Nguyen Minh Hieu",
+		email: "nguyenminhcho@gmail.com",
 		password: "123456", password_confirmation: "123456",
-		nickname: "kieuthuong",
-		gender: "female",
+		nickname: "chocho",
+		gender: "male",
 		remote_img_url: "https://yolo.vn/wp-content/uploads/2019/08/hinh-anh-cho-pomsky-dep-45.jpg",
 		birthday: "1997-03-03"},
 
 	{id: 4, role: 0,
-		name: "Nguyen Ngoc Trung",
-		email: "nguyenngoctrung@gmail.com",
+		name: "Bui Hoang Phu",
+		email: "phuhoangbui@gmail.com",
 		password: "123456", password_confirmation: "123456",
-		nickname: "nguyenngoctrung",
+		nickname: "phuhoangbui",
 		gender: "male",
 		remote_img_url: "http://cdn.hoahoctro.vn/uploads/2018/10/5bc41f947aa93-1.jpg",
 		birthday: "1997-06-06"},
-
-	{id: 5, role: 0,
-		name: "Duong Ngoc Son",
-		email: "duongngocson@gmail.com",
-		password: "123456", password_confirmation: "123456",
-		nickname: "duongngocson",
-		gender: "male",
-		remote_img_url: "https://petto.vn/wp-content/uploads/2019/03/InstaSave3.jpg",
-		birthday: "1997-11-11"},
 ])
 
 Category.delete_all
@@ -63,61 +54,43 @@ Brand.create!([
 	{
 		name: "Medline", 
 		description: "We make healthcare run better.", 
-		img: "https://www.medline.com/wp-content/uploads/2019/05/medline-logo-180-180.jpg",
+		remote_img_url: "https://www.medline.com/wp-content/uploads/2019/05/medline-logo-180-180.jpg",
 		category_id: 2
 	},
 	{
 		name: "NOVA", 
 		description: "Committed to your safety & comfort", 
-		img: "https://www.novajoy.com/wp-content/uploads/2014/04/newlogo.png",
+		remote_img_url: "https://www.novajoy.com/wp-content/uploads/2014/04/newlogo.png",
 		category_id: 2
 	},
 	{
 		name: "Karman", 
 		description: "Nation's leading manufacturer of wheelchairs", 
-		img: "https://www.karmanhealthcare.com/wp-content/uploads/2019/01/karmanLogo-1.jpg",
+		remote_img_url: "https://www.karmanhealthcare.com/wp-content/uploads/2019/01/karmanLogo-1.jpg",
 		category_id: 2
 	},
 	{
 		name: "ComfyGO", 
 		description: "We make lifes easier", 
-		img: "https://www.comfygomobility.com/wp-content/uploads/2017/11/comfygo-logo2.png",
+		remote_img_url: "https://www.comfygomobility.com/wp-content/uploads/2017/11/comfygo-logo2.png",
 		category_id: 2
 	},
 	{
 		name: "EW Elite", 
 		description: "We provide you with the best electric-powered wheelchairs that will allow you to improve your mobility and do more.", 
-		img: "https://cdn.shopify.com/s/files/1/0053/1306/9129/files/logo-EW-web_200x.png?v=1550610488",
+		remote_img_url: "https://cdn3.f-cdn.com/contestentries/255938/11632066/55bc8151339ba_thumb900.jpg",
 		category_id: 2
 	},
 	{
 		name: "Herman Miller", 
 		description: "Settings for every purpose", 
-		img: "https://c.imge.to/2019/12/11/vzVvnH.png",
-		category_id: 1
-	},
-	{
-		name: "Ergohuman", 
-		description: "Extraordinary comfort, ease of use and unique styling", 
-		img: "https://ergohuman.com/product_images/logo_1393628483__72912.jpg",
-		category_id: 1
-	},
-	{
-		name: "Smugdesk", 
-		description: "Create the best products which aid in promoting your health, with the latest technology and advances in office furniture", 
-		img: "https://cdn.shopify.com/s/files/1/0055/2714/2490/files/IMG_3178_225x.PNG?v=1562220483",
-		category_id: 1
-	},
-	{
-		name: "Humanscale",
-		description: "Leading manufacturer of ergonomic office tools", 
-		img: "https://www.humanscale.com/imagesHS2017/logo.svg",
+		remote_img_url: "https://c.imge.to/2019/12/11/vzVvnH.png",
 		category_id: 1
 	},
 	{
 		name: "Knoll",
 		description: "Knoll is a constellation of design-driven brands and people, working together with our clients to create inspired modern interiors.", 
-		img: "https://www.knoll.com/images/logo.png",
+		remote_img_url: "https://www.knoll.com/images/logo.png",
 		category_id: 1
 	}
 ])
@@ -357,7 +330,7 @@ Removable Anti Bacterial Seat And Back Cushions",
 	{
 		name:"Ergohuman High Back Chair LE9ERG w/ Headrest and Leather",
 		category_id: 1,
-		brand_id: 7,
+		brand_id: 6,
 		function: "Office Chairs",
 		remote_img_url:"https://cdn2.bigcommerce.com/server1400/ddaf1/products/34/images/146/Ergohuman-le9erg-chair__55272.1308750010.1280.1280.jpg?c=2",
 		description:"The LE9ERG Raynor Ergohuman Chair is the all-leather version of the original Ergohuman Chair, featuring a high back and a headrest. The versatile ergonomic office chair offers a variety of features along with the added support of contoured cushions covered in durable black leather",
@@ -367,7 +340,7 @@ Removable Anti Bacterial Seat And Back Cushions",
 	{
 		name:"Eurotech Racer Multifunction Chair FM4087",
 		category_id: 1,
-		brand_id: 7,
+		brand_id: 6,
 		function: "Office Chairs",
 		remote_img_url:"https://cdn2.bigcommerce.com/server1400/ddaf1/products/77/images/355/1016415176_1___71099.1319214872.1280.1280.jpg?c=2",
 		description:"If you want an office chair that goes beyond the basics of adjustment, try the Eurotech Racer Multifunction Chair FM4087. Unlike task chairs, this ergonomic chair features a multifunction mechanism that allows the back and seat to tilt and lock independently of one another",
@@ -377,7 +350,7 @@ Removable Anti Bacterial Seat And Back Cushions",
 	{
 		name:"Raynor Ergo Elite Chair ME5ERGLTLOW",
 		category_id: 1,
-		brand_id: 7,
+		brand_id: 6,
 		function: "Office Chairs",
 		remote_img_url:"https://cdn2.bigcommerce.com/server1400/ddaf1/products/97/images/593/Eurotech_Raynor_ErgoElite_ME5ERGLTLOW_MAIN__94447.1419963831.1280.1280.jpg?c=2",
 		description:"The ME5ERGLTLOW Chair offers all of the same ergonomic features of the original Ergohuman V2 Chair with black arms and seat mechanism. The design of the ME5ERGLTLOW Raynor Ergo Elite Chair offers effortless adjustability, a high weight capacity and a more customized fit with features like five-position tilt lock and dynamic arms that slide forward and back",
@@ -386,101 +359,7 @@ Removable Anti Bacterial Seat And Back Cushions",
 	},
 
 
-	### Smugdesk
-	{
-		name:"SmugChair Leather Executive High Back Office Chair",
-		category_id: 1,
-		brand_id: 8,
-		function: "Office Chairs",
-		remote_img_url:"https://cdn.shopify.com/s/files/1/0055/2714/2490/products/1_6f044182-9d1b-4afa-bec7-aea00790761f_2048x2048.jpg?v=1564995692",
-		description:"Our premium bonded leather executive chair offers phenomenal comfort and support with the features of an ergonomic chair, but with what you would expect from a leather executive chair",
-		price: 180,
-		quantity: 20
-	},
-	{
-		name:"SmugChair Ergonomic Grey Mesh High Back Office Chair",
-		category_id: 1,
-		brand_id: 8,
-		function: "Office Chairs",
-		remote_img_url:"https://cdn.shopify.com/s/files/1/0055/2714/2490/products/1_6cf27d6d-9f0d-42d3-8a72-edc5a370cdfe_2048x2048.jpg?v=1562827701",
-		description:"The Smugdesk high back office chair offers full support for the user, promoting comfort and support at an affordable price. Featuring an adjustable neck rest, tilt lock mechanism and lumbar pad, this chair provides value and comfort for the user.",
-		price: 85,
-		quantity: 20
-	},
-	{
-		name:"SmugChair Ergonomic Mesh Office Chair",
-		category_id: 1,
-		brand_id: 8,
-		function: "Office Chairs",
-		remote_img_url:"https://cdn.shopify.com/s/files/1/0055/2714/2490/products/1_7da64fb3-7803-4f99-a7a8-7bbbe4c2f3b0_2048x2048.jpg?v=1563159703",
-		description:"Featuring an adjustable neck rest, adjustable armrests, a tilt lock mechanism and enhanced lumbar cushioning, this chair provides value and comfort for the user.",
-		price: 220,
-		quantity: 20
-	},
-	{
-		name:"SmugChair Full Recline Ergonomic Mesh High Back Office Chair",
-		category_id: 1,
-		brand_id: 8,
-		function: "Office Chairs",
-		remote_img_url:"https://cdn.shopify.com/s/files/1/0055/2714/2490/products/5_af6d6333-3278-42f2-a6e6-ab4f5369717b_2048x2048.jpg?v=1564994668",
-		description:"The Smugdesk high back office chair offers full support for the user, promoting comfort and support at an affordable price. Featuring an adjustable neck rest, tilt lock mechanism and slide out foot rest, this chair provides value and comfort for the user.",
-		price: 200,
-		quantity: 20
-	},
-
-	### Humanscale
-
-	{
-		name:"Humanscale Summa",
-		category_id: 1,
-		brand_id: 9,
-		function: "Office Chairs",
-		remote_img_url:"https://www.humanscale.com/userFiles/images/seating/summa/summaproduct_6.jpg",
-		description:"Designed for today’s most dynamic leaders, Summa is a versatile leather conference chair suitable for the corner office, the boardroom, as well as the home office",
-		price: 4300,
-		quantity: 20
-	},
-	{
-		name:"Humanscale Freedom Headrest",
-		category_id: 1,
-		brand_id: 9,
-		function: "Office Chairs",
-		remote_img_url:"https://www.humanscale.com/userFiles/images/seating/freedomheadrest/17_humanscale_freedom_headrest_chair_prod1.jpg",
-		description:"Described by The New York Times as the gold standard in office seating, the Freedom chair redefines the concept of traditional task chairs.",
-		price: 1169,
-		quantity: 20
-	},
-	{
-		name:"Humanscale Liberty Task",
-		category_id: 1,
-		brand_id: 9,
-		function: "Office Chairs",
-		remote_img_url:"https://www.humanscale.com/userFiles/images/seating/libertytask/17_humanscale_liberty_1.jpg",
-		description:"The Liberty Task chair is an intelligent mesh task chair engineered to provide automatic lumbar support for every user, as well offering simplicity and complete ease of use",
-		price: 200,
-		quantity: 20
-	},
-	{
-		name:"Humanscale FREEDOM TASK CHAIR",
-		category_id: 1,
-		brand_id: 9,
-		function: "Office Chairs",
-		remote_img_url:"https://www.humanscale.com/userFiles/images/seating/freedomtask/17_humanscale_freedom_headrest_chair_prod2_jw.jpg",
-		description:"Designed to complement any space and integrate effortlessly into the modern office, the Freedom task chair offers comfort, style and complete ease of use",
-		price: 200,
-		quantity: 20
-	},
-
-	{
-		name:"Humanscale DIFFRIENT WORLD",
-		category_id: 1,
-		brand_id: 9,
-		function: "Office Chairs",
-		remote_img_url:"https://www.humanscale.com/userFiles/images/seating/world/diffrient_mesh_task_chair.jpg",
-		description:"Diffrient World is Humanscale's first foray into all-mesh task seating. Designer Niels Diffrient wanted to create the most minimal, full-function task chair ever made",
-		price: 919,
-		quantity: 20
-	},
+	
 ])
 
 OrderStatus.delete_all

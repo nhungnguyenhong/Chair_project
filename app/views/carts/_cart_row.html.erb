@@ -17,17 +17,53 @@
     <h5>$<%= chair.price %></h5>
   </td>
   <td>
-    <%= form_for order_item do |f| %>
     <div class="product_count">
-      <span class="input-number-decrement"> <i class="ti-angle-down"></i></span>
-      <%= f.text_field :quantity, value: order_item.quantity.to_i, class: "input-number", min: 1 %>
-      <span class="input-number-increment"> <i class="ti-angle-up"></i></span>
-      <%= f.hidden_field :chair_id, value: chair.id %>
-      <%= f.submit "Update quantity", class: "d-none", id: "update-item-button" %>
+      <span class="input-number-decrement" id = "minus"> <i class="ti-angle-down"></i></span>
+      <input value="<%=order_item.quantity%>" class="input-number" min="1" type="text" name="order_item[quantity]" id="order_item_quanity">
+      <input type="hidden" value="<%=order_item.id%>" id = "order_item_id">
+      <span class="input-number-increment" id = "plus"> <i class="ti-angle-up"></i></span>
     </div>
-    <% end %>
   </td>
   <td>
     <h5>$<%= order_item.total_price.round %></h5>
   </td>
 </tr>
+<script>
+  $(function(){
+    $( ".input-number-decrement" ).click(function() {
+      var quantity = Number($('#order_item_quanity').val()) - 1;
+      var order_item_id = $('#order_item_id').val();
+      $.ajax({
+        method: "put",
+        url: "/order_items/"+order_item_id,
+        data: {'quantity': quantity},
+        success: function (res) {
+        },
+      });
+    });
+    $( ".input-number-increment" ).click(function() {
+      var quantity = Number($('#order_item_quanity').val()) + 1;
+      var order_item_id = $('#order_item_id').val();
+      $.ajax({
+        method: "put",
+        url: "/order_items/"+order_item_id,
+        data: {'quantity': quantity},
+        success: function (res) {
+        },
+      });
+    });
+    $('#order_item_quanity').keypress(function(event) {
+    if (event.keyCode == 13 || event.which == 13) {
+        var quantity = Number($('#order_item_quanity').val());
+        var order_item_id = $('#order_item_id').val();
+        $.ajax({
+          method: "put",
+          url: "/order_items/"+order_item_id,
+          data: {'quantity': quantity},
+          success: function (res) {
+          },
+        });  
+      }
+    });
+  })
+</script>

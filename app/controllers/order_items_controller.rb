@@ -7,8 +7,8 @@ class OrderItemsController < ApplicationController
     # update lai item neu item da co trong cart
     if chair_ids.include?(params[:chair_id].to_i)
       @order_item = @order.order_items.find_by(chair_id: params[:chair_id].to_i)
-      new_quantity = @order_item.quantity + params[:quantity].to_i
-      @order_item.update_attributes(quantity: new_quantity)
+      @new_quantity = @order_item.quantity + params[:quantity].to_i
+      @order_item.update_attributes(quantity: @new_quantity)
     else
       # them vao cart neu la item moi
       @order_item = @order.order_items.new(order_item_params)

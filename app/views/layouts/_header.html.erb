@@ -25,11 +25,8 @@
                                     <%= link_to t("layouts._header.shop_category"), chairs_path, class: "dropdown-item", method: :get %>
                                 </div>
                             </li>
-
-
-
                             <li class="nav-item">
-                                <a class="nav-link" href="#"><%=t("layouts._header.contact")%></a>
+                                <%= link_to t("layouts._header.contact"), "/contact", class: "nav-link" %>
                             </li>
                         </ul>
                     </div>
