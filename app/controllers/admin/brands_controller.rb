@@ -36,10 +36,11 @@ class Admin::BrandsController < ApplicationController
         @brand.category_id = params[:category_id]
         if @brand.update_attributes brand_params
             flash[:success] = "Info brand updated"
+            redirect_to new_admin_brand_path
         else
             flash[:danger] = "Can not update brand"
+            redirect_to :back
         end
-        redirect_to :back
     end
 
     def destroy

@@ -14,6 +14,7 @@ Rails.application.routes.draw do
     root "static_pages#home"
      #contact
     get 'contact', to: 'static_pages#contact'
+    get 'about', to: 'static_pages#about'
     #resources users
     resources :users,  only: [:index, :edit, :update]
 

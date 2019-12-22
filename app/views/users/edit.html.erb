@@ -17,14 +17,6 @@
   <!--================End Home Banner Area =================-->
   
   <!--================Single Product Area =================-->
-  <% flash.each do |key, value| %>
-    <div id="error_explanation" style="mt-5">
-        <div class="alert alert-danger col-lg-6 col-lg-offset-3">
-          <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-          <strong><%= value unless value.blank? %>!</strong>
-        </div>
-    </div>
-  <% end %>
   <% if user_signed_in? %>
     <%= form_for @user, url: user_path(@user.id), method: :put do |f| %> 
         <div class="product_image_area section_padding">

@@ -38,6 +38,7 @@ en:
       log_out: Log out
       admin_dashboard: Admin dashboard
       shop_category: Shop category
+      About: About
   static_pages:
     home:
       preamble: We committed to your safety & comfort

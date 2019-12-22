@@ -46,7 +46,7 @@ class Admin::ChairsController < ApplicationController
     @chair.category_id = Brand.find(params[:brand_id]).category.id
     if @chair.update_attributes chair_params
       flash[:success] = "Info chair updated"
-      redirect_to :back
+      redirect_to admin_chairs_path
     else
       flash[:danger] = "Can not update chair"
       redirect_to :back

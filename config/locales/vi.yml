@@ -38,6 +38,7 @@ vi:
       log_out: Thoát
       admin_dashboard: Trang quản lý
       shop_category: Danh mục cửa hàng
+      About: Giới thiệu
   static_pages:
     home:
       preamble: Chúng tôi cam kết sự an toàn và thoải mái của bạn

@@ -6,7 +6,10 @@ class StaticPagesController < ApplicationController
     @brands = Brand.all
   end
   def contact
-    SendMailer.contact_email("trungnn160697@gmail.com", "test").deliver_now
+    SendMailer.contact_email("hongnhungnguyen4092@gmail.com", "test").deliver_now
+
+  end
+  def about
 
   end
 end

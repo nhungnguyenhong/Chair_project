@@ -42,6 +42,8 @@ class Admin::UsersController < ApplicationController
   end
   
   def destroy
+    Billing.where(user_id: params[:id]).destroy_all
+
     @user.destroy
   end
   
