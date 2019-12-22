@@ -12,14 +12,6 @@
   <br>
   <section class="container-fluid" style="background-color:white;margin: 0 10px 0px 10px;border-radius:5px;height:1000px">
     <div style="margin-top:20px" class="col-xs-9 col-xs-offset-1">
-      <% flash.each do |key, value| %>
-        <div id="error_explanation" style="mt-5">
-          <div class="alert alert-danger col-lg-6 col-lg-offset-3">
-             <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-             <strong><%= value unless value.blank? %>!</strong>
-          </div>
-        </div>
-      <% end %>
       <%= form_for(Brand.new, as: :brand,:html => {:class => 'row'}, url: admin_brands_path, method: :post) do |f| %>
         <div class="col-md-12 form-group p_star">
           <label>Name</label>

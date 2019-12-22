@@ -19,13 +19,6 @@
                 <% end %>
         </div>
         <% end %>
-        <% flash.each do |key, value| %>
-            <div id="error_explanation">
-              <div class="alert alert-#{key}">
-                <%= value unless value.blank? %>
-              </div>
-            </div>
-        <% end %>
         <%= form_for(@user, as: :user, :html => {:class => 'row'}, url: admin_user_path(@user.id), method: :put) do |f| %>
             <div class="col-md-12 form-group p_star">
                 <%= f.text_field :name, autofocus: true, autocomplete: "name", class: "form-control", placeholder: "Name", value: @user.name %>
