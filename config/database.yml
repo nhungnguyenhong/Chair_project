@@ -12,9 +12,9 @@ default: &default
 development:
   <<: *default
   host: localhost
-  database: che_development
+  database: db_dev
   username: postgres
-  password: xahoiden
+  password: 12345
 
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".
@@ -22,10 +22,10 @@ development:
 test:
   <<: *default
   host: localhost
-  database: che_test
+  database: db_test
   username: postgres
-  password: xahoiden
+  password: 12345
 
 production:
   <<: *default
-  database: che_production
+  database: db_production
