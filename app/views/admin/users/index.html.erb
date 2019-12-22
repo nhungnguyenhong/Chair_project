@@ -12,9 +12,6 @@
     <br>
   <section class="container-fluid" style="background-color:white;margin: 0 10px 0px 10px;border-radius:5px;height:1000px">
     <div style="margin-top:20px">    
-      <div class="col-lg-8">
-        <%= link_to "New", new_admin_user_path, :class=>'btn btn-primary', :style=>'width:100px'%>
-      </div>
       <div class="col-lg-4"> 
         <div class="input-group">
           <%= search_form_for @search, class: "input-group-btn search-panel",   url: admin_users_path do |f|%>
@@ -46,11 +43,10 @@
                   <td><%= user.id %></td>
                   <td><%= user.name %></td>
                   <td><%= user.email %></td>
-                  <td><%= image_tag current_user.img? ? user.img.url : "http://file.vforum.vn/hinh/2018/02/hinh-cho-cuoi-deu-cho-de-thuong-12.jpg", width: '100', height: '100px' %></td>
+                  <td><%= image_tag user.img? ? user.img : "http://file.vforum.vn/hinh/2018/02/hinh-cho-cuoi-deu-cho-de-thuong-12.jpg", width: '100', height: '100px' %></td>
                   <td><%= user.role.upcase %></td>
                   <%if(user.role.upcase != 'ADMIN')%>
                     <td>
-                      <%= link_to "Edit", edit_admin_user_path(user.id), class: 'btn btn-warning ', style:'width:63px'%>
                       <button class = "btn btn-danger delete" id = "<%=user.id%>" >Delete</button>
                     </td>
                   <%end%>

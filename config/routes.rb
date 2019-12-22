@@ -12,22 +12,26 @@ Rails.application.routes.draw do
     get 'chart', to: 'admin#show_chart'
 
     root "static_pages#home"
-
+     #contact
+    get 'contact', to: 'static_pages#contact'
+    get 'about', to: 'static_pages#about'
     #resources users
     resources :users,  only: [:index, :edit, :update]
 
     resources :billings, only: [:new, :create, :index, :show, :delete]
-    
     namespace :admin do
       resources :users
       resources :chairs
       resources :categories
       resources :billings, only: [:index, :show]
+      resources :brands
     end
     
     #rating
     post 'rating', to: 'chairs#rating'
     get 'rating', to: 'chairs#get_rating'
+    #autocomplete search
     post 'search_chair', to: 'chairs#get_chair_by_key'
+   
   end
 end

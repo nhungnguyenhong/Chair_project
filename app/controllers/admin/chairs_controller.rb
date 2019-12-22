@@ -6,11 +6,11 @@ class Admin::ChairsController < ApplicationController
   layout 'admin'
   def index
     @chairs = Chair.all.order(id: :desc).page(params[:page]).per(10)
-    @categories = Category.all
-    if params[:category] && params[:category] != "0"
-      @category_id = params[:category].to_i
-      @category = @categories.find(@category_id)
-      @chairs = @category.chairs
+    @brands = Brand.all
+    if params[:brand] && params[:brand] != "0"
+      @brand_id = params[:brand].to_i
+      @brand = @brands.find(@brand_id)
+      @chairs = @brand.chairs
     else
       @chairs = Chair.all
     end
@@ -20,12 +20,13 @@ class Admin::ChairsController < ApplicationController
   
   def new
     @chair = Chair.new
-    @categories = Category.all
+    @brands = Brand.all
   end
   
   def create
     @chair = Chair.new chair_params
-    @chair.category_id = params[:category_id]
+    @chair.brand_id = params[:brand_id]
+    @chair.category_id = Brand.find(params[:brand_id]).category.id
     if @chair.save
       flash[:success] = "Successfully!!!"
       redirect_to admin_chairs_path
@@ -36,15 +37,16 @@ class Admin::ChairsController < ApplicationController
   end
   
   def edit
-    @categories = Category.all
+    @brands = Brand.all
   end
   
   def update
     # @user = find_user
-    @chair.category_id = params[:category_id]
+    @chair.brand_id = params[:brand_id]
+    @chair.category_id = Brand.find(params[:brand_id]).category.id
     if @chair.update_attributes chair_params
       flash[:success] = "Info chair updated"
-      redirect_to :back
+      redirect_to admin_chairs_path
     else
       flash[:danger] = "Can not update chair"
       redirect_to :back
