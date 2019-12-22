@@ -14,7 +14,7 @@ class AdminController < ApplicationController
   
   def show_chart
     @summary =  Billing.all
-    @sum_by_month = [0,0,0,0,0,0,0,0,0,0,0]
+    @sum_by_month = [0,0,0,0,0,0,0,0,0,0,0,0]
     @summary.each do |i|
       (0..11).each do |m|
         if (i.created_at.month.to_i-1) == m

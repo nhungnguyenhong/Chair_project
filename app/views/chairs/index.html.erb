@@ -103,12 +103,7 @@
                                         <% if chair.quantity == 0 %>
                                             <h3 align="left" class="text-danger">SOLD OUT</h3>
                                         <%else%>
-                                            <%= form_for @order_item, remote: true do |f| %>
-                                                <%= f.hidden_field :quantity, value: 1 %>
-                                                <%= f.hidden_field :chair_id, value: chair.id %>
-                                                <%= f.submit "Add to Cart", class: "btn_3 d-none", id: "add_cart" + chair.id.to_s %>
-                                                <a href="javascript:$('#add_cart<%= chair.id.to_s %>').click();" class="add_cart">+ <%=t("add_to_cart")%></a>
-                                            <% end %>
+                                            <a href="javascript:;"  class="add_cart commit" id ="<%=chair.id%>">+ <%=t("add_to_cart")%></a>
                                         <%end%>
                                     </div>
                                 </div>

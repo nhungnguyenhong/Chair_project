@@ -79,3 +79,16 @@ en:
     sub_total: Subtotal
     continute_shopping: Continute shopping
     proceed_checkout: Proceed to checkout
+    no_items: There are no items in your shopping cart.
+    go_back: Go back
+    shopping_cart: Shopping cart
+  contact:
+    get_in_touch: Get in touch
+    send_message: Send message
+    enter_message: Enter message
+    enter_your_name: Enter your name
+    enter_email: Enter address email
+    enter_subject: Enter subject
+    contact: Contact
+ 
+

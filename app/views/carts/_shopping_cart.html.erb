@@ -4,8 +4,8 @@
       <div class="col-lg-8">
         <div class="breadcrumb_iner">
           <div class="breadcrumb_iner_item">
-            <h2>Shopping Cart</h2>
-            <p>Home <span>-</span>Shopping Cart</p>
+            <h2><%=t("cart.shopping_cart")%></h2>
+            <p><%=t("home")%> <span>-</span><%=t("cart.shopping_cart")%></p>
           </div>
         </div>
       </div>
@@ -23,7 +23,7 @@
 <% end %>
 <% if @order_items.size == 0 %>
   <p class="text-center">
-    There are no items in your shopping cart.  Please <%= link_to "go back", root_path %> and add some items to your cart.
+    <%=t("cart.no_items")%> <%= link_to t("cart.go_back"), root_path %>
   </p>
 <% else %>
   <section class="cart_area padding_top">

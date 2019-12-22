@@ -6,10 +6,16 @@ class BillingsController < ApplicationController
   def create
     @billing = Billing.new billing_params
     @billing.order = current_order
+    @order = current_order
+    @order_items = @order.order_items;
+    @order_items.each do |order_item|
+      @chair = order_item.chair
+      @new_quantity = @chair.quantity - order_item.quantity
+      @chair.update(quantity: @new_quantity)
+    end
     @billing.user = current_user
     if @billing.save
       session.delete(:order_id)
-      @billing.order.status_id = 2
       flash[:success] = "Successfully checkout!"
       redirect_to billing_path(@billing)
     else

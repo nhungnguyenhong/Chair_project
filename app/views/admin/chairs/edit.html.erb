@@ -29,7 +29,7 @@
           <label>Brand</label>
           <select name="brand_id" class = "form-control">
             <%@brands.each do |b| %>
-              <option value="<%=b.id%>" <%if @chair.brand.id == b.id %>selected<%end%>><%=b.name%></option>
+              <option value="<%=b.id%>" <%if @chair.brand.id == b.id %>selected<%end%>><%=b.name%>-<%=b.category.name%></option>
             <%end%>
           </select>
         </div>
